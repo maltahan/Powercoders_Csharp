@@ -15,6 +15,7 @@
  */
 
 using System.Diagnostics.Contracts;
+using System.Text.RegularExpressions;
 
 namespace Org.Powercoders.Api.Calculator
 {
@@ -24,7 +25,11 @@ namespace Org.Powercoders.Api.Calculator
         {
             Contract.Assert(!string.IsNullOrWhiteSpace(expression));
 
-            return default(bool);
+            Regex regex = new Regex(@"^\ *(sqrt)\ *(\()\ *(\d+)\ *(\))\ *$");
+
+            var match = regex.IsMatch(expression);
+
+            return match;
         }
     }
 }
