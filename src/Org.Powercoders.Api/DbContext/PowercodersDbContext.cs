@@ -1,5 +1,5 @@
 ﻿/**
- * Copyright 2017 powercoders
+ * Copyright 2017 d-fens GmbH
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,16 +14,21 @@
  * limitations under the License.
  */
 
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System.Data.Entity;
+using Org.Powercoders.Api.Models;
 
-namespace Org.Powercoders.Api.Tests
+namespace Org.Powercoders.Api.DbContext
 {
-    [TestClass]
-    public class UnitTest1
+    public class PowercodersDbContext : System.Data.Entity.DbContext
     {
-        [TestMethod]
-        public void TestMethod1()
+        private static readonly string _connectionStringName = string.Format("name={0}", typeof(PowercodersDbContext).FullName);
+
+        public PowercodersDbContext() 
+            : base(_connectionStringName)
         {
+            // N/A
         }
+
+        public DbSet<User> Users { get; set; }
     }
 }

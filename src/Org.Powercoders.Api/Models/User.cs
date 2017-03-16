@@ -14,16 +14,15 @@
  * limitations under the License.
  */
 
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System.ComponentModel.DataAnnotations;
 
-namespace Org.Powercoders.Api.Tests
+namespace Org.Powercoders.Api.Models
 {
-    [TestClass]
-    public class UnitTest1
+    public class User
     {
-        [TestMethod]
-        public void TestMethod1()
-        {
-        }
+        [Key]
+        public long Id { get; set; }
+
+        public string Name { get; set; }
     }
 }
