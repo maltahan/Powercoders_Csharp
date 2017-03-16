@@ -24,7 +24,7 @@ namespace Org.Powercoders.Api.Calculator
 
         public CalculatorHost(ICalculator calculator)
         {
-            Contract.Assert(null != calculator, "you tried to screw me.");
+            Contract.Assert(null != calculator, Message.CalculatorHost__MissingInterface);
 
             this.calculator = calculator;
         }
