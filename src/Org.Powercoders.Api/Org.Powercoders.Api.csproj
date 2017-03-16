@@ -163,6 +163,11 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Message.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Message.resx</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\201703160947121_InitialRollup.cs" />
     <Compile Include="Migrations\201703160947121_InitialRollup.Designer.cs">
       <DependentUpon>201703160947121_InitialRollup.cs</DependentUpon>
@@ -184,6 +189,10 @@
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Message.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Message.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201703160947121_InitialRollup.resx">
       <DependentUpon>201703160947121_InitialRollup.cs</DependentUpon>
     </EmbeddedResource>
