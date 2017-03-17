@@ -31,5 +31,17 @@ namespace Org.Powercoders.Api.Calculator
 
             return match;
         }
+
+        public float GetSqurtResult(string expression)
+        {
+            Regex regex = new Regex(@"^\ *(sqrt)\ *(\()\ *(\d+)\ *(\))\ *$");
+            Match match = regex.Match(expression);
+
+            var value = match.Value;
+
+
+
+            return default(float);
+        }
     }
 }
