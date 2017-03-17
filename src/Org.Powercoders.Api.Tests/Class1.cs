@@ -28,7 +28,24 @@ namespace Org.Powercoders.Api.Tests
     {
         public void Test()
         {
-            
+            var t11 = new Token<int>();
+            var t12 = new Token<int>();
+            var evaluator1 = new Add<Token<int>, int>();
+            var tresult1 = evaluator1.Evaluate(t11, t12);
+
+            var t21 = new Token<long>() { Value = 5 };
+            var t22 = new Token<long>() { Value = 1 };
+            var evaluator2 = new Add<Token<long>, long>();
+            var tresult2 = evaluator2.Evaluate(t21, t22);
+
+            var expression = "2 + 2";
+
+            // parse expression into two tokens and an operator
+
+            var token1 = new Token<long>() {Value = 5};
+            var token2 = new Token<long>() {Value = 1 };
+
+            var addOperator = new AddOperator();
         }
 
 
@@ -57,29 +74,43 @@ namespace Org.Powercoders.Api.Tests
     }
 
 
-    public abstract class OperatorEvaluator<TOperator, T1, T2, TResult>
-        where TOperator : Operator
-        where T1 : Token
-        where T2 : Token
-        where TResult : Token
+    public interface IOperatorEvaluator2<TToken, TTokenType>
+        where TToken : Token<TTokenType>
+        where TTokenType : struct
     {
-        public abstract TResult Evaluate(T1 value1, T2 value2);
+        TToken Evaluate(TToken token1, TToken token2);
     }
 
-    public class Add<T1, T2, TResult> : OperatorEvaluator<AddOperator, T1, T2, TResult>
-        where T1 : Token
-        where T2 : Token
-        where TResult : Token
+    public class Add<TToken, TTokenType> : IOperatorEvaluator2<TToken, TTokenType>
+        where TToken : Token<TTokenType>
+        where TTokenType : struct
     {
-        public override TResult Evaluate(T1 value1, T2 value2)
+        public TToken Evaluate(TToken token1, TToken token2)
         {
+            var value1 = token1.Value;
             throw new NotImplementedException();
         }
     }
 
-    public class Token
+    public class Token<T>
+        where T : struct
     {
-        public object Value { get; set; }
+        public T Value { get; set; }
+    }
+
+    public class IntToken : Token<int>
+    {
+        
+    }
+
+    public class LongToken : Token<long>
+    {
+
+    }
+
+    public class DoubleToken : Token<double>
+    {
+
     }
 
     public enum OperatorEnum
